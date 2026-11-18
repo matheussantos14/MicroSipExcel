@@ -1,4 +1,4 @@
-import base64
+﻿import base64
 def filtrar_ramais(lista, termo):
     t = (termo or "").strip().lower()
     return [r for r in lista if r.get("ativo", 1) == 1 and (not t or t in r["nome"].lower() or t in str(r["ramal"]))]
