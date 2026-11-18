@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Excel: dependencias compiladas do MicroSIP | Excel, fora do SVN.
+  Padrao: D:\Projetos\MicroSIP-deps (irma de ExcelAddons). Para outra pasta, defina a
+  variavel de ambiente MICROSIP_DEPS ou passe /p:MicroSipDeps=... ao MSBuild.
+    pjproject\          pjproject 2.17 com pjlib\include\pj\config_site.h (sem video, TLS Schannel)
+    SQLiteCpp\          SQLiteCpp 3.4.0 (cabecalhos)
+    lib\Win32\Release\  SQLiteCpp.lib e sqlite3.lib (build-sqlitecpp.cmd)
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MicroSipDeps Condition="'$(MicroSipDeps)'=='' And '$(MICROSIP_DEPS)'!=''">$(MICROSIP_DEPS)</MicroSipDeps>
+    <MicroSipDeps Condition="'$(MicroSipDeps)'==''">$(MSBuildThisFileDirectory)..\..\..\..\MicroSIP-deps\</MicroSipDeps>
+    <MicroSipDeps Condition="!HasTrailingSlash('$(MicroSipDeps)')">$(MicroSipDeps)\</MicroSipDeps>
+    <PjDir>$(MicroSipDeps)pjproject\</PjDir>
+  </PropertyGroup>
+  <Import Project="$(PjDir)build\vs\pjproject-vs14-common-config.props" />
+  <PropertyGroup>
+    <BuildToolset Condition="'$(VisualStudioVersion)'=='18.0'">v145</BuildToolset>
+    <OutDir>$(MicroSipDeps)out\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(MicroSipDeps)obj\microsip\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+</Project>

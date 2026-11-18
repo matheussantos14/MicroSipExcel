@@ -1,0 +1,12 @@
+# Pastas de build e instalador gerado
+Debug/
+Release/
+x64/
+Win32/
+.vs/
+instalador/dist/
+
+# Ficheiros locais de utilizador e configuracao
+*.user
+*.suo
+*.ini
