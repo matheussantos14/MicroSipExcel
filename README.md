@@ -51,3 +51,7 @@ e copiar o instalador para `instalador\dist` (é o que vai no SVN para distribui
 A chave que cifra a senha SIP no `.ini` não vem no fonte publicado; este build não lê a senha gravada
 pelo oficial. A senha da conta SIP precisa ser digitada de novo uma vez (ou o `.ini` distribuído com a
 senha em texto puro, que é cifrada no primeiro uso).
+ 
+## Seguranca e Auditoria Tecnica 
+- Credenciais armazenadas de forma cifrada no MicroSIP.ini ou via autenticacao integrada do Windows (ERP Deak). 
+- Sanitizacao de parametros de busca e validacao de entrada antes da consulta ao banco de dados. 
