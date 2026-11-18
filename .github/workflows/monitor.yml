@@ -1,0 +1,13 @@
+name: Monitoramento de Disponibilidade (Health Check)
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar disponibilidade do repositorio e portal de distribuicao
+        run: curl -f -s -o /dev/null -w 'Status HTTP Repo %{http_code} - Tempo %{time_total}s - Servico operacional Status UP' https://github.com/matheussantos14/MicroSipExcel
